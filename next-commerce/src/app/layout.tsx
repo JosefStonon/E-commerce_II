@@ -3,8 +3,9 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from './components/Navbar';
 import clsx from 'clsx';
-import { ClerkProvider } from '@clerk/nextjs';
-import { ptBR} from '@clerk/localizations';
+import Hydrate from './components/Hydrate';
+// import { ClerkProvider } from '@clerk/nextjs';
+// import { ptBR} from '@clerk/localizations';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,17 +22,21 @@ export default function RootLayout({
 }) {
   return (
 
-    <ClerkProvider localization={ptBR}>
+   // <ClerkProvider localization={ptBR}>
     <html lang="en">
       <body className={clsx(inter.className, 'bg-blue-300')}>
+
+        <Hydrate>
+
         <Navbar />
-        <main className=' h-screen p-16'>
+        <main className='h-screen p-16'>
           
           {children}
         </main>
+        </Hydrate>
       </body>
     </html>
-    </ClerkProvider>
+   // </ClerkProvider>
    
   )
 };

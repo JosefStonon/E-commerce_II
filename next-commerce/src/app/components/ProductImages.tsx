@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { useState } from 'react';
 import Image from "next/image";
@@ -18,7 +18,7 @@ export default function ProductImage({ product, fill }: ProductImageProps) {
       <Image
         src={product.image}
         fill
-        alt={product.title}
+        alt={product.name}
         className={`object-cover ${
         loading ? 'scale-110 blur-3xl grayscale' : 'scale-100 blur-0 grayscale-0'
       }`}
@@ -32,7 +32,7 @@ export default function ProductImage({ product, fill }: ProductImageProps) {
           src={product.image}
           width={400}
           height={700}
-          alt={product.title}
+          alt={product.name}
           className={`object-cover ${
           loading ? 'scale-110 blur-3xl grayscale' : 'scale-100 blur-0 grayscale-0'
         }`}
