@@ -2,12 +2,11 @@ import { create } from "zustand";
 
 import { persist } from "zustand/middleware";
 import { ProductType } from "./types/ProductType";
-import Product from "./app/components/AddCart";
 
 type CartState = {
   cart: ProductType[];
   addProduct: (product: ProductType) => void;
-  //removeProduct: (productId: string) => void;
+  removeProduct: (product: ProductType) => void;
   isOpen: boolean;
   toggleCart: () => void;
 }
@@ -35,8 +34,28 @@ export const useCardStore = create<CartState>() (
         return { cart: [...state.cart, { ...item, quantity: 1}]}
       }
     }),
+    removeProduct: (item) => set((states) => {
+      const existingProduct = states.cart.find((p) => p.id === item.id);
+
+      if (existingProduct && existingProduct.quantity! > 1) {
+        const updatedCart = states.cart.map((p) => {
+          if(p.id === item.id) {
+            return {
+              ...p,
+              quantity: p.quantity! - 1
+            };
+          }
+          return p;
+        });
+        return { cart: updatedCart};
+      } else {
+        const filteredCart = states.cart.filter((p) => p.id !== item.id);
+        return {cart: filteredCart}
+      }
+     
+    }),
     isOpen: false,
-    toggleCart: () => set((state) => ({ isOpen: !state.isOpen}))
+    toggleCart: () => set((states) => ({ isOpen: !states.isOpen}))
   }),
   { name: 'cart-storage' }
   )

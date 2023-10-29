@@ -4,8 +4,8 @@ import './globals.css';
 import Navbar from './components/Navbar';
 import clsx from 'clsx';
 import Hydrate from './components/Hydrate';
-// import { ClerkProvider } from '@clerk/nextjs';
-// import { ptBR} from '@clerk/localizations';
+ import { ClerkProvider } from '@clerk/nextjs';
+ import { ptBR} from '@clerk/localizations';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
 
-   // <ClerkProvider localization={ptBR}>
+    <ClerkProvider localization={ptBR}>
     <html lang="en">
       <body className={clsx(inter.className, 'bg-blue-300')}>
 
@@ -36,7 +36,7 @@ export default function RootLayout({
         </Hydrate>
       </body>
     </html>
-   // </ClerkProvider>
+    </ClerkProvider>
    
   )
 };

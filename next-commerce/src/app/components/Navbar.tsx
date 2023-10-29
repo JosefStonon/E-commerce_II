@@ -1,6 +1,5 @@
 
-import { useCardStore } from '@/store'
-//import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/nextjs'
 import Link from 'next/link'
 import Cart from './Cart'
 
@@ -17,21 +16,21 @@ export default function Navbar()  {
             <Cart />
 
               
-            </div>
-         {/*  <div>
-             <SignedIn>
-              <UserButton />
-            </SignedIn>
+              <div>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
 
-            <SignedOut>
+                <SignedOut>
 
-              <SignInButton mode='modal'>
-                <button className='border rounded-md border-gray-400 px-3 py-2'>
-                  Fazer login
-                </button>
-              </SignInButton>
-            </SignedOut> 
-          </div>  */}
+                  <SignInButton mode='modal'>
+                    <button className='border rounded-md border-gray-400 px-3 py-2'>
+                      Fazer login
+                    </button>
+                  </SignInButton>
+                </SignedOut> 
+              </div>  
+          </div>
     </nav>
   )
 }
