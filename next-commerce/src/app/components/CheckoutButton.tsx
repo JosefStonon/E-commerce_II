@@ -18,7 +18,7 @@ export default function CheckoutButton({totalPrice}: CheckoutButtonProps) {
   const handleCheckout = async () => {
     if (!user) {
       cartStore.toggleCart();
-      router.push('/sign-in')
+      router.push(`/sign-in?redirectUrl='/'`);
 
       return;
     }
@@ -33,7 +33,7 @@ export default function CheckoutButton({totalPrice}: CheckoutButtonProps) {
                 Total: {formatPrice(totalPrice)}
             </p>
 
-            <button onClick={() => cartStore.setCheckout('checkout')} className="w-full rounded-md bg-teal-600 text-white py-2 mt-2">
+            <button onClick={handleCheckout} className="w-full rounded-md bg-teal-600 text-white py-2 mt-2">
                 Finalizar Compra
             </button>
           </div>

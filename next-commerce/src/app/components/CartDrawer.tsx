@@ -4,6 +4,7 @@ import { formatPrice } from "@/lib/utils";
 import { useCardStore } from "@/store";
 import Image from "next/image";
 import CheckoutButton from "./CheckoutButton";
+import Checkout from "./Checkout";
 
 
 export default function CartDrawer() {
@@ -31,6 +32,10 @@ export default function CartDrawer() {
                         Voltar para loja
                        </button>
                        <div className="border-t border-gray-400 my-4"></div>
+                       {
+                          useStore.onCheckout === 'cart' && (
+                          
+                       <>
                         {
                           useStore.cart.map((item) => (
                             <div key={item.id} className="flex gap-4 py-4">
@@ -58,12 +63,21 @@ export default function CartDrawer() {
                             </div>
                           ))
                         }
+                       </>
+)
+}
 
                         {
                           useStore.cart.length > 0 && useStore.onCheckout === 'cart' &&  (
                             <CheckoutButton
                               totalPrice={totalPrice}
                             />
+                          )
+                        }
+
+                        {
+                          useStore.onCheckout === 'checkout' && (
+                            <Checkout />
                           )
                         }
                       </div>

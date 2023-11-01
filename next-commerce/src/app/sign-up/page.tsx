@@ -1,12 +1,12 @@
 import { SignUp } from "@clerk/nextjs";
 
 type SignUpPageProps = {
-  serachParams: {
+  searchParams: {
     redirectUrl: string;
   };
 };
 
-export default function SignUpInPage({ serachParams: { redirectUrl }}: SignUpPageProps) {
+export default function SignUpInPage({ searchParams: { redirectUrl }}: SignUpPageProps) {
   return (
     <section className="py-14">
       <div className="container mx-auto px-4">
