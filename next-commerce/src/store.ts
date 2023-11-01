@@ -9,6 +9,8 @@ type CartState = {
   removeProduct: (product: ProductType) => void;
   isOpen: boolean;
   toggleCart: () => void;
+  onCheckout: string;
+  setCheckout: (checkout: string) => void;
 }
 
 export const useCardStore = create<CartState>() (
@@ -55,7 +57,9 @@ export const useCardStore = create<CartState>() (
      
     }),
     isOpen: false,
-    toggleCart: () => set((states) => ({ isOpen: !states.isOpen}))
+    toggleCart: () => set((states) => ({ isOpen: !states.isOpen})),
+    onCheckout: 'cart',
+    setCheckout: (checkout)=> set(() => ({ onCheckout: checkout})),
   }),
   { name: 'cart-storage' }
   )

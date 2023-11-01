@@ -3,11 +3,18 @@
 import { formatPrice } from "@/lib/utils";
 import { useCardStore } from "@/store";
 import Image from "next/image";
+import CheckoutButton from "./CheckoutButton";
 
 
 export default function CartDrawer() {
 
+
+
   const useStore = useCardStore();
+
+  const totalPrice = useStore.cart.reduce((acc, item) => {
+    return acc + item.price! * item.quantity!;
+  }, 0)
 
   return (
     <div 
@@ -50,6 +57,14 @@ export default function CartDrawer() {
                               
                             </div>
                           ))
+                        }
+
+                        {
+                          useStore.cart.length > 0 && useStore.onCheckout === 'cart' &&  (
+                            <CheckoutButton
+                              totalPrice={totalPrice}
+                            />
+                          )
                         }
                       </div>
                   </div>

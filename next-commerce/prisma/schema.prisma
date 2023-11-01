@@ -13,9 +13,10 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  externalId String   @unique
-  attributes Json
-  creatAt    DateTime @default(now())
-  updateAt   DateTime @updatedAt
+  id               Int      @id @default(autoincrement())
+  externalId       String   @unique
+  attributes       Json
+  creatAt          DateTime @default(now())
+  updateAt         DateTime @updatedAt
+  stripeCustomerId String?
 }
