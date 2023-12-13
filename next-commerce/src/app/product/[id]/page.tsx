@@ -1,9 +1,8 @@
 
-import Product from "@/app/components/AddCart";
+import AddCart from "@/app/components/AddCart";
 import ProductImage from "@/app/components/ProductImages";
 import { formatPrice } from "@/lib/utils";
 import Stripe from "stripe";
-import AddCart from "@/app/components/AddCart";
 
 type ProducctPageProps = {
   params: {
@@ -27,7 +26,7 @@ async function getProduct( id: string) {
     price: price.data[0].unit_amount,
     name: produto.name,
     image: produto.images[0],
-    description:produto.description,
+    description: produto.description,
     currency: price.data[0].currency,
 
   }

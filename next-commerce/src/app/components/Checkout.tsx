@@ -1,5 +1,7 @@
-import { useEffect } from "react";
+'use client'
+
 import { useCardStore } from "@/store";
+import { useEffect } from "react";
 
 export default function Checkout() {
 
