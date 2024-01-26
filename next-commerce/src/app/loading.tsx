@@ -1,4 +1,3 @@
-import SkeletonCard from "./components/SkeletonCard";
 
 
 
