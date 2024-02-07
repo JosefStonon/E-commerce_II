@@ -29,7 +29,7 @@ export default async function Checkout() {
       })
       .then((data) => {
         cartStore.setPaymentIntent(data.paymentIntent.id);
-        setClientSecret(data.paymentIntent?.client_Secret);
+        setClientSecret(data.paymentIntent?.client_secret);
         console.log(data.paymentIntent);
       });
   }, [cartStore, cartStore.cart, cartStore.paymentIntent]);
@@ -45,12 +45,9 @@ export default async function Checkout() {
   return (
     <div>
       {clientSecret ? (
-        <>
-          <Elements options={options} stripe={stripePromise}>
-            <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
-          </Elements>
-          <h1>Checkout</h1>
-        </>
+        <Elements options={options} stripe={stripePromise}>
+          <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
+        </Elements>
       ) : (
         <div>
           <h1>Carregando...</h1>
