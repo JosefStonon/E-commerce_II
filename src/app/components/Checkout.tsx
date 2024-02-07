@@ -29,7 +29,6 @@ export default async function Checkout() {
       })
       .then((data) => {
         cartStore.setPaymentIntent(data.paymentIntent.id);
-        console.log("data.paymentIntent", data.paymentIntent);
         setClientSecret(data.paymentIntent?.client_secret);
       });
   }, [cartStore, cartStore.cart, cartStore.paymentIntent]);
