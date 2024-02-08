@@ -1,10 +1,10 @@
 import prisma from '@/lib/prisma';
 
 import { IncomingHttpHeaders } from 'http';
-import {headers} from 'next/headers';
+import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
-import {Webhook, WebhookRequiredHeaders} from 'svix';
 import Stripe from 'stripe';
+import { Webhook, WebhookRequiredHeaders } from 'svix';
 
 const webhookSecret = process.env.CLERK_WEBHOOK_SECRET || '';
 
